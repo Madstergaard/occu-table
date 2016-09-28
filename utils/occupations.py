@@ -1,21 +1,31 @@
-import csv
 import random
 
-dic = {}
-with open('occupations.csv') as csvfile:
-    reader = csv.reader(csvfile)
-    for row in reader:
-        if (row[0] != "Job Class" and row[0] != "Total"):
-            dic[row[0]] = row[1]
+f = open("occupations.csv", "r")
 
-def retD():
-	return dic 
+d = {}
+flag = False
 
-def jobme():
-    counter = 0
-    choose = random.uniform(0,99.8)
-    for i in dic:
-        counter += dic[i]
-        if choose <= counter:
-            return i
-       
+for line in f:
+	if flag == False:
+		flag = True
+	else:
+		ind = line.rfind(',');
+		key = line[:ind]
+		val = line[ind+1:]
+		val = float(val)
+		d[key] = val
+d.pop(key)
+
+def jobMe():
+	f = random.random() * 100
+	percentctr = 0.0
+	for key in d:
+		if f < percentctr + d[key]:
+			return key
+		else:
+			percentctr += d[key]
+
+
+
+def getD():
+        return d

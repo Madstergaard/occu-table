@@ -1,24 +1,25 @@
-<!DOCTYPE html>
-
+<!DOCTYPE HTML>
 <html>
-
   <head>
-    <title> {{ title }} </title>
+    <title>{{title}}</title>
   </head>
-
   <body>
-    <table border=1>
+    <h1>{{head}}</h1>
+    {% for i in links %}
+    <a href = '{{i}}'>Home</a>
+    {% endfor %}
+
+    <p> A random job selected for you:</p>
+    <h4>{{randChoice}}</h4>
+    <table>
+    {% for i in table %}
       <tr>
-	<th>Occupations</th>
-	<th>Percentage</th>
-      </tr>      
-      {% for key, value in collection.iteritems() %}
-      <tr>
-	<td> {{ key }} </td>
-	<td> {{ value }} </td>
+  <td> {{i}} </td>
+  <td> {{table[i]}} </td>
       </tr>
-      {% endfor %}
+    {% endfor %}
     </table>
   </body>
 
+  
 </html>

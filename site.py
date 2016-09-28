@@ -1,4 +1,4 @@
-import occupations
+import occupations, csv, random
 from flask import Flask, render_template # Capital Flask is a subset of the module flask
 
 
@@ -18,14 +18,16 @@ def welcome():
 @fred.route("/occupations")
 
 
+
 def run():
-    return render_template('occupations.html' , title = "Behold the Occupations", collection = occupations.retD())
+    return render_template('occupations.html', title = "Behold the Occupations", head = "header", links = ['/'], table = occupations.getD(), randChoice = occupations.jobMe())
+    
 
 
 # For the winners page~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 @fred.route("/forthewinners")
 def winners():
-    return "we are da champions"
+    return "we are da champions ma fwend"
 
 if __name__ == '__main__':
     fred.debug = True
