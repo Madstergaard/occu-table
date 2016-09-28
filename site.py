@@ -9,13 +9,12 @@ fred = Flask(__name__)
 @fred.route("/") # decorator, goes directly above funtion header, the 
                  # "/" (route) for webpage will run this function
 def welcome():
-    return "Welcome to the site"
+    return render_template("root.html")
 
 
 # Occupations page~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
 @fred.route("/occupations")
 
-import csv
 import random
 
 oc = open("occupations.csv","r").readlines()[1:-1]
