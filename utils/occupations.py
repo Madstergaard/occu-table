@@ -1,20 +1,21 @@
 import csv
 import random
 
-oc = open("occupations.csv","r").readlines()[1:-1]
-oc = csv.reader(oc)
-dictionary = {}
+dic = {}
+with open('occupations.csv') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        if (row[0] != "Job Class" and row[0] != "Total"):
+            dic[row[0]] = row[1]
 
-for job in oc:
-    dictionary[job[0]] = float(job[1])
-
+def retD():
+	return dic 
 
 def jobme():
     counter = 0
     choose = random.uniform(0,99.8)
-    for i in dictionary:
-        counter += dictionary[i]
+    for i in dic:
+        counter += dic[i]
         if choose <= counter:
             return i
-        
-print(jobme())
+       
